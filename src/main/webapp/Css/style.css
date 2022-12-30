@@ -196,6 +196,18 @@
     list-style-type: none;
 }
 
+#login-icon li:hover #login-icon>.subnav li  {
+    display: block;
+}
+
+#login-icon> .subnav li  {
+    display: none;
+}
+
+#login-icon >.subnav li:hover {
+    display: block;
+}
+
 
 
 #slider {

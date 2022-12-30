@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class ConnectionMySQL {
     public static Connection getConnection() {
-        String jdbcURL = "jdbc:mysql://localhost:3306/client_manager";
+        String jdbcURL = "jdbc:mysql://localhost:3306/quanlyxe";
         String jdbcUsername = "root";
         String jdbcPassword = "12345678";
         Connection connection=null ;

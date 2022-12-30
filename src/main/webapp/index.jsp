@@ -28,12 +28,13 @@
     <div id="login-icon">
         <ul>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
+            <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li>
                 <a href="profile?email=${client.email}" >Welcome ${client.name} <i class="setting-login ti-user"></i></a>
             </li>
-
         </ul>
     </div>
+
 </div>
 
 <div class="mySlider" id="slider" style="display: block">

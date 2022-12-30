@@ -89,12 +89,11 @@ public class ProductDAO {
             resultSet.next();
 
 
-            String Name= resultSet.getString("Name");
+            String Name= resultSet.getString("name");
             int role = resultSet.getInt("role");
             String gender = resultSet.getString("gender");
             String address = resultSet.getString("address");
             int phoneNumber = resultSet.getInt("sdt");
-
 
             return new Client(Name,email,pass,role,gender,address,phoneNumber);
 

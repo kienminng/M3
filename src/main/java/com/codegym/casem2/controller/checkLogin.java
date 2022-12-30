@@ -21,7 +21,6 @@ public class checkLogin extends HttpServlet {
         String email = req.getParameter("name");
         String password = req.getParameter("password");
         Client client = clientServiceliml.checkLogin(email,password);
-        String mess = "login false";
 
 
         if (client!=null) {
@@ -30,7 +29,7 @@ public class checkLogin extends HttpServlet {
                 resp.sendRedirect("/carHome");
 
         } else  {
-            resp.sendRedirect("/login");
+            resp.sendRedirect("/login?mess=error");
         }
     }
 }

@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Profile</title>
-    <link rel="stylesheet" href="themify-icons/themify-icons.css" >
+    <link rel="stylesheet" href="themify-icons/themify-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .gradient-custom {
@@ -52,7 +52,7 @@
         <ul>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li>
-                <a href="/profile" >${client.name} <i class="setting-login ti-user"></i></a>
+                <a href="/profile">${client.name} <i class="setting-login ti-user"></i></a>
             </li>
         </ul>
     </div>
@@ -68,19 +68,20 @@
                         </div>
                         <div class="col-md-4 gradient-custom text-center text-white"
                              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-<%--                            <button  class="btn btn-dark"--%>
-<%--                                     style="list-style-type: none;float: left;"><a href="/carHome" style="text-decoration: none;color: white">--%>
-<%--                                Back</a></button>--%>
+                            <%--                            <button  class="btn btn-dark"--%>
+                            <%--                                     style="list-style-type: none;float: left;"><a href="/carHome" style="text-decoration: none;color: white">--%>
+                            <%--                                Back</a></button>--%>
 
-                                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-                                     alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                                 alt="Avatar" class="img-fluid my-5" style="width: 80px;"/>
 
-<%--                            <c:if test="${client.img!=null}">--%>
-<%--                                <img src="${client.img}" alt="Avatar" class="img-fluid my-5" style="width: 80px;">--%>
-<%--                            </c:if>--%>
+                            <%--                            <c:if test="${client.img!=null}">--%>
+                            <%--                                <img src="${client.img}" alt="Avatar" class="img-fluid my-5" style="width: 80px;">--%>
+                            <%--                            </c:if>--%>
 
 
                             <h5> ${client.name} </h5>
+                            <p>${client.gender}</p>
                             <p>Client</p>
                             <i class="far fa-edit mb-5"></i>
 
@@ -91,7 +92,7 @@
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
-                                        <h6></h6>
+                                        <h6>Email</h6>
                                         <p class="text-muted">${client.email}</p>
                                     </div>
                                     <div class="col-6 mb-3">
@@ -111,7 +112,7 @@
                                         <c:if test="${client.role==1}">
                                             <p class="text-muted">User</p>
                                         </c:if>
-                                        <c:if  test="${client.role==2}">
+                                        <c:if test="${client.role==2}">
                                             <p class="text-muted">Admin</p>
                                         </c:if>
 
@@ -123,9 +124,11 @@
                                     <a href="https://www.instagram.com/"><i class="fab ti-instagram fa-lg"></i></a>
                                 </div>
                                 <div>
-
                                 </div>
                                 <div>
+                                    <button type="button" class="btn btn-danger" style="float: right">
+                                        <a href="/editUser" style="text-decoration: none;color: white;">Edit User</a>
+                                    </button>
                                     <button type="button" class="btn btn-danger" style="float: right">
                                         <a href="/login" style="text-decoration: none;color: white">Log out</a>
                                     </button>
