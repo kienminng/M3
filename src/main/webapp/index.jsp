@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,10 +28,14 @@
     </div>
     <div id="login-icon">
         <ul>
+            <c:if test="${client.role ==2}">
+                <li><a href=""><i class="ti-user"></i></a></li>
+                <li><a href=""><i class="ti-plus ti-car"></i></a></li>
+            </c:if>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li>
-                <a href="profile?email=${client.email}" >Welcome ${client.name} <i class="setting-login ti-user"></i></a>
+                <a href="profile?email=${client.email}" >Welcome ${client.name} <i class="setting-login ti-id-badge"></i></a>
             </li>
         </ul>
     </div>

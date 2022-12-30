@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>List Product</title>
@@ -67,6 +68,10 @@
   </div>
   <div id="login-icon">
     <ul>
+      <c:if test="${client.role ==2}">
+        <li><a href=""><i class="ti-user"></i></a></li>
+        <li><a href=""><i class="ti-plus ti-car"></i></a></li>
+      </c:if>
       <li><a href=""><i class="ti-shopping-cart"></i></a></li>
       <li>
         <a href="profile?email=${client.email}" > ${client.name} <i class="setting-login ti-user"></i></a>

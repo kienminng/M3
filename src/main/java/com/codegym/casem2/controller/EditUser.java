@@ -18,8 +18,7 @@ public class EditUser extends HttpServlet {
         ClientServiceliml clientServiceliml = new ClientServiceliml();
         String email =req.getParameter("email");
         Client client = clientServiceliml.findIndexByEmail(email);
-        req.setAttribute("client", client);
-
+        req.setAttribute("clients", client);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/html5/editUser.jsp");
         dispatcher.forward(req, resp);
     }
@@ -32,9 +31,11 @@ public class EditUser extends HttpServlet {
         String email = req.getParameter("email");
         String address = req.getParameter("address");
         int phoneNumber = Integer.parseInt(req.getParameter("phoneNumber"));
-        int role = 1;
+        Client client = clientServiceliml.findIndexByEmail(email);
+        int role = client.getRole();
         String password = req.getParameter("password");
 
         clientServiceliml.edit(new Client(name,email,password,role,gender,address,phoneNumber));
+        resp.sendRedirect("/login");
     }
 }

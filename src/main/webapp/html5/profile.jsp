@@ -30,7 +30,7 @@
 
 
 </head>
-<body>
+<body style="background: url('https://www.supercars.net/blog/wp-content/uploads/2020/09/wallpaperflare.com_wallpaper-1-1.jpg') top center /cover no-repeat">
 <div id="header">
     <div id="nav">
         <ul>
@@ -50,6 +50,10 @@
     </div>
     <div id="login-icon">
         <ul>
+            <c:if test="${client.role ==2}">
+                <li><a href=""><i class="ti-user"></i></a></li>
+                <li><a href=""><i class="ti-plus ti-car"></i></a></li>
+            </c:if>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li>
                 <a href="/profile">${client.name} <i class="setting-login ti-user"></i></a>
@@ -68,21 +72,22 @@
                         </div>
                         <div class="col-md-4 gradient-custom text-center text-white"
                              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                            <%--                            <button  class="btn btn-dark"--%>
-                            <%--                                     style="list-style-type: none;float: left;"><a href="/carHome" style="text-decoration: none;color: white">--%>
-                            <%--                                Back</a></button>--%>
+
 
                             <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
                                  alt="Avatar" class="img-fluid my-5" style="width: 80px;"/>
 
-                            <%--                            <c:if test="${client.img!=null}">--%>
-                            <%--                                <img src="${client.img}" alt="Avatar" class="img-fluid my-5" style="width: 80px;">--%>
-                            <%--                            </c:if>--%>
-
-
                             <h5> ${client.name} </h5>
-                            <p>${client.gender}</p>
-                            <p>Client</p>
+
+                            =======
+                            <c:if test="${client.role==1}">
+                                <p>Client</p>
+                            </c:if>
+                            <c:if test="${client.role==2}">
+                                <p>Admin</p>
+                            </c:if>
+
+
                             <i class="far fa-edit mb-5"></i>
 
                         </div>
@@ -127,10 +132,11 @@
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-danger" style="float: right">
-                                        <a href="/editUser" style="text-decoration: none;color: white;">Edit User</a>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" style="float: right">
                                         <a href="/login" style="text-decoration: none;color: white">Log out</a>
+                                    </button>
+                                    <button type="button" class="btn btn-warning" style="float: right">
+                                        <a href="editUser?email=${client.email}"
+                                           style="text-decoration: none;color: white">Edit profile</a>
                                     </button>
                                 </div>
                             </div>
