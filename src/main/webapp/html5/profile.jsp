@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Profile</title>
-    <link rel="stylesheet" href="themify-icons/themify-icons.css" >
+    <link rel="stylesheet" href="themify-icons/themify-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .gradient-custom {
@@ -52,7 +52,7 @@
         <ul>
             <c:if test="${client.role ==2}">
                 <li><a href=""><i class="ti-user"></i></a></li>
-                <li><a href=""><i class="ti-plus ti-car"></i></a></li>
+                <li><a href="/createCar"><i class="ti-plus ti-car"></i></a></li>
             </c:if>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li>
