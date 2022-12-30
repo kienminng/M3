@@ -122,7 +122,7 @@ public class ProductDAO {
         try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet =preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             String pass = resultSet.getString("password");
 

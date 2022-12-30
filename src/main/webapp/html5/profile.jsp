@@ -30,7 +30,7 @@
 
 
 </head>
-<body>
+<body style="background: url('https://www.supercars.net/blog/wp-content/uploads/2020/09/wallpaperflare.com_wallpaper-1-1.jpg') top center /cover no-repeat">
 <div id="header">
     <div id="nav">
         <ul>
@@ -50,6 +50,10 @@
     </div>
     <div id="login-icon">
         <ul>
+            <c:if test="${client.role ==2}">
+                <li><a href=""><i class="ti-user"></i></a></li>
+                <li><a href=""><i class="ti-plus ti-car"></i></a></li>
+            </c:if>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li>
                 <a href="/profile" >${client.name} <i class="setting-login ti-user"></i></a>
@@ -81,7 +85,14 @@
 
 
                             <h5> ${client.name} </h5>
-                            <p>Client</p>
+                            <c:if test="${client.role==1}">
+                                <p>Client</p>
+                            </c:if>
+                            <c:if test="${client.role==2}">
+                                <p>Admin</p>
+                            </c:if>
+
+
                             <i class="far fa-edit mb-5"></i>
 
                         </div>
@@ -129,6 +140,10 @@
                                     <button type="button" class="btn btn-danger" style="float: right">
                                         <a href="/login" style="text-decoration: none;color: white">Log out</a>
                                     </button>
+                                    <button type="button" class="btn btn-warning" style="float: right">
+                                        <a href="/login" style="text-decoration: none;color: white">Edit profile</a>
+                                    </button>
+
                                 </div>
                             </div>
                         </div>
