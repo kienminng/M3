@@ -36,5 +36,8 @@ public class ClientServiceliml {
         return productDAO.checkLogin(email,pass);
     }
 
+    public List<Client> searchUser(String name) {
+        return productDAO.searchUser(name);
+    }
 
 }

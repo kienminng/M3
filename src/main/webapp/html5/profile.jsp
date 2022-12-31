@@ -52,7 +52,7 @@
         <ul>
             <c:if test="${client.role ==2}">
                 <li><a href=""><i class="ti-user"></i></a></li>
-                <li><a href=""><i class="ti-plus ti-car"></i></a></li>
+                <li><a href="/createCar"><i class="ti-plus ti-car"></i></a></li>
             </c:if>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li>

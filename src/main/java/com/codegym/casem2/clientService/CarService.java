@@ -6,24 +6,26 @@ import com.codegym.casem2.modal.Car;
 import java.util.List;
 
 public class CarService {
-    public static List<Car> getAllCar() {
-        return CarDAO.getAllCar();
+
+    CarDAO carDAO = new CarDAO();
+    public  List<Car> getAllCar() {
+        return carDAO.getAllCar();
     }
 
-    public static Car findByCarID(int ID) {
-        return CarDAO.findByCarID(ID);
+    public  Car findByCarID(int ID) {
+        return carDAO.findByCarID(ID) ;
     }
 
-    public static boolean saveCar(Car car) {
-        return CarDAO.saveCar(car);
+    public boolean saveCar(Car car) {
+        return carDAO.saveCar(car);
     }
 
-    public static void edit(Car car) {
-        CarDAO.editCar(car);
+    public void edit(Car car) {
+        carDAO.editCar(car);
     }
 
-    public static void delete(int Id){
-        CarDAO.deleteCar(Id);
+    public void delete(int Id){
+        carDAO.deleteCar(Id);
     }
 
 

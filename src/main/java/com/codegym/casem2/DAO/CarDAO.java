@@ -11,9 +11,9 @@ import java.util.List;
 
 public class CarDAO {
 
-    public static List<Car> cars = new ArrayList<>();
+    public List<Car> cars = new ArrayList<>();
 
-    public static List<Car> getAllCar() {
+    public List<Car> getAllCar() {
         String sql = "select * from xe";
 
         Connection connection = ConnectionMySQL.getConnection();
@@ -28,6 +28,7 @@ public class CarDAO {
                 String  color = resultSet.getString("color");
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
+                cars.add(new Car(carID,carName,price,color,img,branch));
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -36,11 +37,12 @@ public class CarDAO {
         return cars;
     }
 
-    public static boolean saveCar(Car car) {
-        String spl = "insert into xe value(null,?,?,?,?,?)";
+    public boolean saveCar(Car car) {
+        String spl = "insert into xe value(?,?,?,?,?,?)";
         Connection  connection = ConnectionMySQL.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(spl);
+            preparedStatement.setInt(1,car.getCarID());
             preparedStatement.setString(2,car.getCarName());
             preparedStatement.setDouble(3,car.getPrice());
             preparedStatement.setString(4,car.getColor());
@@ -54,7 +56,7 @@ public class CarDAO {
         }
     }
 
-    public static boolean editCar(Car car) {
+    public boolean editCar(Car car) {
         String sql = "update xe set Namexe=?,Price=?,Color =?,Img=?,branch=?  where carID=?";
         Connection connection = ConnectionMySQL.getConnection();
         try {
@@ -73,7 +75,7 @@ public class CarDAO {
 
     }
 
-    public static Car findByCarID(int id) {
+    public Car findByCarID(int id) {
         String sql = "select * from xe where carID =" +id;
         Connection connection = ConnectionMySQL.getConnection();
         try {
@@ -95,7 +97,7 @@ public class CarDAO {
         }
     }
 
-    public static void deleteCar(int carID) {
+    public void deleteCar(int carID) {
         String sql = "delete from xe where carID="+carID;
 
         Connection connection = ConnectionMySQL.getConnection();

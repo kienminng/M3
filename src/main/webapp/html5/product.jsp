@@ -42,6 +42,48 @@
       opacity: 0.7;
     }
 
+    /*body{*/
+    /*  font-family: 'Roboto', sans-serif;*/
+    /*  margin: 0;*/
+    /*  padding: 0;*/
+    /*  display: flex;*/
+    /*  justify-content: center;*/
+    /*  align-items: center;*/
+    /*  min-height: 100vh;*/
+    /*}*/
+    /*.container{*/
+    /*  position: relative;*/
+    /*}*/
+    /*.container .noi_dung img{*/
+    /*  position: absolute;*/
+    /*  top: 0;*/
+    /*  left: 0;*/
+    /*  width: 100%;*/
+    /*  height: 100%;*/
+    /*  object-fit: cover;*/
+    /*}*/
+    /*.container .noi_dung::before{*/
+    /*  content: '';*/
+    /*  position: absolute;*/
+    /*  top: 0;*/
+    /*  left: 0;*/
+    /*  width: 100%;*/
+    /*  height: 100%;*/
+    /*  background: #000;*/
+    /*  z-index: 1;*/
+    /*  animation: reveal 1s reverse forwards;*/
+    /*  animation-delay: 3s;*/
+    /*  transform-origin: right;*/
+    /*}*/
+    /*@keyframes reveal{*/
+    /*  0%{*/
+    /*    transform: scaleX(0);*/
+    /*  }*/
+    /*  100%{*/
+    /*    transform: scaleX(1);*/
+    /*  }*/
+    /*}*/
+
   </style>
   <link rel="stylesheet" href="/Css/style.css">
   <link rel="stylesheet" href="/themify-icons/themify-icons.css">
@@ -81,77 +123,18 @@
 </div>
 <div class="container" style="margin-top: 70px">
   <h1 style="text-align: center">List of cars</h1>
+  <c:forEach items="${carList}" var="cars">
+    <div class="card col-4" style="max-height: 470px;min-height: 470px">
+      <div class="noi_dung">
+        <img src="${cars.img}" alt="loading" style="width:100%">
+        <h1>${cars.carName}</h1>
+        <p class="price">${cars.price} B VND</p>
+        <h3>${cars.branch} , color: ${cars.color}  </h3>
+        <p><button><a href="/addToCart?carID=${cars.carID}" style="text-decoration: none">Add to Cart</a></button></p>
+      </div>
 
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
-  <div class="card col-4">
-    <img src="https://c4.wallpaperflare.com/wallpaper/825/184/17/car-vehicle-super-car-supercars-wallpaper-preview.jpg" alt="Denim Jeans" style="width:100%">
-    <h1>Tailored Jeans</h1>
-    <p class="price">$19.99</p>
-    <p>Some text about the jeans..</p>
-    <p><button>Add to Cart</button></p>
-  </div>
+    </div>
+  </c:forEach>
 </div>
 
 

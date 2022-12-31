@@ -12,12 +12,9 @@ import java.util.List;
 public class ProductDAO {
 
     public List<Client> getAll() {
-
         List<Client> clients = new ArrayList<>();
         String sql = "select * from khachhang";
-
         Connection connection = ConnectionMySQL.getConnection();
-
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -103,10 +100,11 @@ public class ProductDAO {
         return null;
     }
 
-    public void delete(String email) {
-        String sql = "delete from khachhang where email= " + email;
-        Connection connection = ConnectionMySQL.getConnection();
 
+
+    public void delete(String email) {
+        String sql = "delete from khachhang where email =" +email;
+        Connection connection = ConnectionMySQL.getConnection();
         try {
             Statement statement = connection.createStatement();
             statement.execute(sql);
@@ -138,5 +136,30 @@ public class ProductDAO {
         }
     }
 
+    public List<Client> searchUser(String names) {
+        List<Client> clients = new ArrayList<>();
+        String sql = "select * from khachhang where name = ? or email =? or gender=? or address = ?";
+        Connection connection = ConnectionMySQL.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,names);
+            preparedStatement.setString(2,names);
+            preparedStatement.setString(3,names);
+            preparedStatement.setString(4,names);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String email = resultSet.getString("email");
+                String pass = resultSet.getString("password");
+                int role = resultSet.getInt("role");
+                String gender = resultSet.getString("gender");
+                String address = resultSet.getString("address");
+                int phoneNumber = resultSet.getInt("sdt");
+                clients.add(new Client(names, email, pass, role, gender, address, phoneNumber));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return clients;
+    }
 
 }
