@@ -1,4 +1,4 @@
-package com.codegym.casem2.view;
+package com.codegym.casem2.controller;
 
 import com.codegym.casem2.clientService.ClientServiceliml;
 import com.codegym.casem2.modal.Client;
@@ -11,13 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-
 @WebServlet(urlPatterns = "/searchUser")
 public class SearchUser extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name1");

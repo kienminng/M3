@@ -100,9 +100,9 @@
         <a href="#">Price</a>
         <div class="subnav">
           <ul>
-            <li><a href="#">normal</a></li>
-            <li><a href="#">Midrange </a></li>
-            <li><a href="#">high</a></li>
+            <li><a href="priceNormal">normal</a></li>
+            <li><a href="priceMedium">Midrange </a></li>
+            <li><a href="priceHigh">high</a></li>
           </ul>
         </div>
       </li>
@@ -111,7 +111,7 @@
   <div id="login-icon">
     <ul>
       <c:if test="${client.role ==2}">
-        <li><a href=""><i class="ti-user"></i></a></li>
+        <li><a href="/ListUser"><i class="ti-user"></i></a></li>
         <li><a href=""><i class="ti-plus ti-car"></i></a></li>
       </c:if>
       <li><a href=""><i class="ti-shopping-cart"></i></a></li>

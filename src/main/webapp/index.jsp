@@ -18,9 +18,9 @@
                 <a href="#">Price</a>
                 <div class="subnav">
                     <ul>
-                        <li><a href="#">normal</a></li>
-                        <li><a href="#">Midrange </a></li>
-                        <li><a href="#">high</a></li>
+                        <li><a href="priceNormal">normal</a></li>
+                        <li><a href="priceMedium">Midrange </a></li>
+                        <li><a href="priceHigh">high</a></li>
                     </ul>
                 </div>
             </li>
