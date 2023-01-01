@@ -175,4 +175,34 @@ public class CarDAO {
         }
         return cars;
     }
+
+    public List<Car> searchCar(String names) {
+        List<Car> cars = new ArrayList<>();
+        String sql = "select * from xe where NameXe like concat('%' ,?, '%') " +
+                "or Price like concat('%' ,?, '%') " +
+                "or Color like concat('%' ,?, '%') " +
+                "or branch like concat('%' ,?, '%') ";
+
+        Connection connection = ConnectionMySQL.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,names);
+            preparedStatement.setString(2,names);
+            preparedStatement.setString(3,names);
+            preparedStatement.setString(4,names);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = Integer.parseInt(resultSet.getString("IDxe"));
+                String name = resultSet.getString("NameXe");
+                double price = Double.parseDouble(resultSet.getString("Price"));
+                String color = resultSet.getString("Color");
+                String img = resultSet.getString("Img");
+                String branch = resultSet.getString("branch");
+                cars.add(new Car(id,name,price,color,img,branch));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cars;
+    }
 }

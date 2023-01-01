@@ -122,7 +122,16 @@
   </div>
 </div>
 <div class="container" style="margin-top: 70px">
-  <h1 style="text-align: center">List of cars</h1>
+  <div style="margin-left: 810px"><form action="/searchCar" method="post">
+    <div>
+      <input type="text" placeholder="Enter here..." name = "name1" style="width: 250px">
+      <button type="submit" style="color: #3c97bf" >Search</button>
+    </div>
+  </form>
+  </div>
+    <h1 style="text-align: center">List of cars</h1>
+
+
   <c:forEach items="${carList}" var="cars">
     <div class="card col-4" style="max-height: 470px;min-height: 470px">
       <div class="noi_dung">

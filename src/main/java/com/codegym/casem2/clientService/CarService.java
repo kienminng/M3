@@ -40,4 +40,8 @@ public class CarService {
     public List<Car> priceHigh() {
         return carDAO.priceHigh();
     }
+
+    public List<Car> searchCar(String name) {
+        return carDAO.searchCar(name);
+    }
 }

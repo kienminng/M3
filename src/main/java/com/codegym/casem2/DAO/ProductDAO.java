@@ -135,10 +135,15 @@ public class ProductDAO {
             return null;
         }
     }
+    //        String sql = "select * from khachhang where name = ? or email =? or gender=? or address = ?";
 
     public List<Client> searchUser(String names) {
         List<Client> clients = new ArrayList<>();
-        String sql = "select * from khachhang where name = ? or email =? or gender=? or address = ?";
+        String sql = "select * from khachhang where name like concat('%' ,?, '%') " +
+                "or email like concat('%' ,?, '%') " +
+                "or gender like concat('%' ,?, '%') " +
+                "or address like concat('%' ,?, '%') ";
+
         Connection connection = ConnectionMySQL.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -148,13 +153,14 @@ public class ProductDAO {
             preparedStatement.setString(4,names);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
                 String pass = resultSet.getString("password");
                 int role = resultSet.getInt("role");
                 String gender = resultSet.getString("gender");
                 String address = resultSet.getString("address");
                 int phoneNumber = resultSet.getInt("sdt");
-                clients.add(new Client(names, email, pass, role, gender, address, phoneNumber));
+                clients.add(new Client(name, email, pass, role, gender, address, phoneNumber));
             }
         } catch (Exception e) {
             e.printStackTrace();
