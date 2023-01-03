@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/addCar")
-public class createNewCar extends HttpServlet {
+@WebServlet(urlPatterns = "/updateCar")
+public class UpdateCar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int carID = Integer.parseInt(req.getParameter("carID"));
@@ -20,16 +20,9 @@ public class createNewCar extends HttpServlet {
         String color = req.getParameter("color");
         String img = req.getParameter("img");
         String branch = req.getParameter("branch");
-        Car newCar = new Car(carID,carName,price,color,img,branch);
-
         CarService carService = new CarService();
-        Car car= carService.findByCarID(carID);
-        if (car==null) {
-            carService.saveCar(newCar);
-            resp.sendRedirect("/carModal");
-        } else {
-            resp.sendRedirect("/createCar");
-        }
+        carService.edit(new Car(carID,carName,price,color,img,branch));
+        resp.sendRedirect("/carModal");
 
     }
 }

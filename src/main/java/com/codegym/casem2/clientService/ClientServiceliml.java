@@ -32,6 +32,8 @@ public class ClientServiceliml {
         return productDAO.checkEmail(email);
     }
 
+
+
     public Client checkLogin(String email,String pass) {
         return productDAO.checkLogin(email,pass);
     }

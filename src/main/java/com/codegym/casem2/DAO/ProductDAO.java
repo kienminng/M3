@@ -125,6 +125,7 @@ public class ProductDAO {
             preparedStatement.setString(1,email);
 
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
 
 
             String pass = resultSet.getString("password");

@@ -11,7 +11,22 @@ public class Client {
     private String address;
     private int phoneNumber;
 
+    private List<Car> cars;
+
+
+
     public Client() {
+    }
+
+    public Client(String name, String email, String password, int role, String gender, String address, int phoneNumber, List<Car> cars) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.gender = gender;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.cars = cars;
     }
 
     public Client(String name, String email, String password, int role, String gender, String address, int phoneNumber) {
@@ -80,6 +95,11 @@ public class Client {
         this.phoneNumber = phoneNumber;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
 
-
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
 }
