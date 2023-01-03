@@ -44,4 +44,8 @@ public class CarService {
     public List<Car> searchCar(String name) {
         return carDAO.searchCar(name);
     }
+
+    public void updateStatus(int status,int IDxe){
+        carDAO.updateStatus(status,IDxe);
+    }
 }

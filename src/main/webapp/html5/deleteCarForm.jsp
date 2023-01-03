@@ -67,8 +67,6 @@
         <div class="d-flex justify-content-end pt-3" style="float: right">
             <a href="/carModal" class="btn btn-dark">Back</a>
         </div>
-
-
     </div>
 </form>
 </body>

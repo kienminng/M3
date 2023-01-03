@@ -20,7 +20,7 @@ public class createNewCar extends HttpServlet {
         String color = req.getParameter("color");
         String img = req.getParameter("img");
         String branch = req.getParameter("branch");
-        Car newCar = new Car(carID,carName,price,color,img,branch);
+        Car newCar = new Car(carID,carName,price,color,img,branch,1);
 
         CarService carService = new CarService();
         Car car= carService.findByCarID(carID);

@@ -19,6 +19,7 @@ public class ProductDAO {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
+                int ID = resultSet.getInt("IDKH");
                 String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
                 String pass = resultSet.getString("password");
@@ -26,7 +27,7 @@ public class ProductDAO {
                 String gender = resultSet.getString("gender");
                 String address = resultSet.getString("address");
                 int phoneNumber = resultSet.getInt("sdt");
-                clients.add(new Client(name, email, pass, role, gender, address, phoneNumber));
+                clients.add(new Client(ID,name, email, pass, role, gender, address, phoneNumber));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,16 +104,16 @@ public class ProductDAO {
 
 
     public void delete(String email) {
-        Connection connection = ConnectionMySQL.getConnection();
-        String sql = "delete from khachhang where email =?";
-        try {
 
+        String sql = "delete from khachhang where email =?";
+        Connection connection = ConnectionMySQL.getConnection();
+        try {
 //            Statement statement = connection.createStatement();
 //            statement.execute(sql);
+//            ResultSet resultSet = preparedStatement.executeQuery();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,email);
             preparedStatement.execute();
-//            ResultSet resultSet = preparedStatement.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
         }

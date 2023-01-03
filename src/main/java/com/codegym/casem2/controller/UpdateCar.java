@@ -21,7 +21,7 @@ public class UpdateCar extends HttpServlet {
         String img = req.getParameter("img");
         String branch = req.getParameter("branch");
         CarService carService = new CarService();
-        carService.edit(new Car(carID,carName,price,color,img,branch));
+        carService.edit(new Car(carID,carName,price,color,img,branch,1));
         resp.sendRedirect("/carModal");
 
     }
