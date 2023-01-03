@@ -12,9 +12,9 @@ import java.util.List;
 
 public class CarDAO {
 
-    public List<Car> cars = new ArrayList<>();
 
     public List<Car> getAllCar() {
+        List<Car> cars = new ArrayList<>();
         String sql = "select * from xe";
 
         Connection connection = ConnectionMySQL.getConnection();
@@ -24,7 +24,7 @@ public class CarDAO {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 int carID = resultSet.getInt("IDxe");
-                String carName = resultSet.getString("Namexe");
+                String carName = resultSet.getString("NameXe");
                 double price = resultSet.getDouble("Price");
                 String color = resultSet.getString("color");
                 String img = resultSet.getString("Img");
@@ -58,7 +58,7 @@ public class CarDAO {
     }
 
     public boolean editCar(Car car) {
-        String sql = "update xe set Namexe=?,Price=?,Color =?,Img=?,branch=?  where carID=?";
+        String sql = "update xe set NameXe=?,Price=?,Color =?,Img=?,branch=?  where IDxe=?";
         Connection connection = ConnectionMySQL.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -77,42 +77,72 @@ public class CarDAO {
     }
 
     public Car findByCarID(int id) {
-        String sql = "select * from xe where carID =" + id;
+
+        String sql = "select * from xe where IDxe =?" ;
+
         Connection connection = ConnectionMySQL.getConnection();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
 
-            int carId = resultSet.getInt("IDxe");
-            String nameCar = resultSet.getString("nameCar");
+            String nameCar = resultSet.getString("nameXe");
             double price = resultSet.getDouble("Price");
             String color = resultSet.getString("Color");
             String img = resultSet.getString("Img");
             String branch = resultSet.getString("branch");
 
-            return new Car(carId, nameCar, price, color, img, branch);
-        } catch (Exception e) {
+            return new Car(id,nameCar,price,color,img,branch);
+        }catch (Exception e){
+
             e.printStackTrace();
             return null;
         }
     }
 
     public void deleteCar(int carID) {
-        String sql = "delete from xe where carID=" + carID;
+
+        String sql = "delete from xe where IDxe=?";
 
         Connection connection = ConnectionMySQL.getConnection();
         try {
-            Statement statement = connection.createStatement();
-            statement.execute(sql);
-        } catch (Exception e) {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,carID);
+        } catch (Exception e){
+
             e.printStackTrace();
         }
     }
 
+
+    public List<Car> getAllCarByName(String carName) {
+        List<Car> cars = new ArrayList<>();
+        String sql = "call find_car_name(?)";
+        Connection connection = ConnectionMySQL.getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, carName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int carID = resultSet.getInt("IDxe");
+                double price = resultSet.getDouble("Price");
+                String color = resultSet.getString("color");
+                String img = resultSet.getString("Img");
+                String branch = resultSet.getString("branch");
+                cars.add(new Car(carID, carName, price, color, img, branch));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cars;
+    }
+
     public List<Car> priceNormal() {
         List<Car> cars = new ArrayList<>();
-        String sql = "select * from xe where Price < 2000";
+        String sql = "select * from xe where Price <40";
         Connection connection = ConnectionMySQL.getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -125,16 +155,19 @@ public class CarDAO {
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
                 cars.add(new Car(id, name, price, color,img,branch));
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return cars;
+
     }
+
 
     public List<Car> priceMedium() {
         List<Car> cars = new ArrayList<>();
-        String sql = "select * from xe where Price between 2000 and 4000";
+        String sql = "select * from xe where Price between 40 and 70";
         Connection connection = ConnectionMySQL.getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -156,7 +189,7 @@ public class CarDAO {
 
     public List<Car> priceHigh() {
         List<Car> cars = new ArrayList<>();
-        String sql = "select * from xe where Price >4000";
+        String sql = "select * from xe where Price >70";
         Connection connection = ConnectionMySQL.getConnection();
         try {
             Statement statement = connection.createStatement();

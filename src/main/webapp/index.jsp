@@ -28,11 +28,14 @@
     </div>
     <div id="login-icon">
         <ul>
+            <li>
+                <a href=""><i class="ti-email"></i></a>
+            </li>
             <c:if test="${client.role ==2}">
                 <li><a href="/ListUser"><i class="ti-user"></i></a></li>
-                <li><a href=""><i class="ti-plus ti-car"></i></a></li>
+                <li><a href="createCar"><i class="ti-plus ti-car"></i></a></li>
+
             </c:if>
-            <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li>
                 <a href="profile?email=${client.email}" >Welcome ${client.name} <i class="setting-login ti-id-badge"></i></a>

@@ -36,9 +36,12 @@
   </div>
   <div id="login-icon">
     <ul>
+      <li>
+        <a href=""><i class="ti-email"></i></a>
+      </li>
       <c:if test="${client.role ==2}">
         <li><a href=""><i class="ti-user"></i></a></li>
-        <li><a href=""><i class="ti-plus ti-car"></i></a></li>
+        <li><a href="createCar"><i class="ti-plus ti-car"></i></a></li>
       </c:if>
       <li><a href=""><i class="ti-shopping-cart"></i></a></li>
       <li>
@@ -47,7 +50,7 @@
     </ul>
   </div>
 </div>
-<form action="" class="container" style="margin-top: 50px">
+<form action="/addCar" method="post" class="container" style="margin-top: 50px">
   <div class="card-body p-md-5 text-black">
     <h3 class="mb-5 text-uppercase">Create car form</h3>
 
@@ -94,7 +97,7 @@
 
 
     <div class="d-flex justify-content-end pt-3" style="float: right">
-      <a href="/login" class="btn btn-secondary btn-lg ms-2">Back</a>
+      <a href="/carModal" class="btn btn-secondary btn-lg ms-2">Back</a>
     </div>
 
 
