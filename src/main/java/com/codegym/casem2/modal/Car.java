@@ -7,17 +7,19 @@ public class Car {
     private String color;
     private String img;
     private String branch;
+    private int status;
 
     public Car() {
     }
 
-    public Car(int carID,String carName, double price, String color,String img, String branch) {
+    public Car(int carID,String carName, double price, String color,String img, String branch,int status) {
         this.carID =carID;
         this.carName = carName;
         this.price = price;
         this.color = color;
         this.img = img;
         this.branch = branch;
+        this.status=status;
     }
 
     public int getCarID() {
@@ -66,5 +68,13 @@ public class Car {
 
     public void setBranch(String branch) {
         this.branch = branch;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

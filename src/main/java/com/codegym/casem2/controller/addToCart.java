@@ -1,8 +1,11 @@
-package com.codegym.casem2.view;
+package com.codegym.casem2.controller;
 
+import com.codegym.casem2.DAO.DanhGiaDAO;
 import com.codegym.casem2.clientService.CarService;
 import com.codegym.casem2.clientService.Cart;
+import com.codegym.casem2.clientService.ClientServiceliml;
 import com.codegym.casem2.modal.Car;
+import com.codegym.casem2.modal.Client;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,13 +19,25 @@ import java.io.IOException;
 public class addToCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String email = req.getParameter("email");
+        ClientServiceliml clientServiceliml = new ClientServiceliml();
+        Client client = clientServiceliml.findIndexByEmail(email);
+        req.setAttribute("client",client);
+
         int carID = Integer.parseInt(req.getParameter("carID"));
         Cart cart = new Cart();
         CarService carService =new CarService();
         Car car = carService.findByCarID(carID);
-        if (car!=null) {
-            cart.addCarToCart(car);
-            RequestDispatcher dispatcher =req.getRequestDispatcher("/html5/modalCheck.jsp");
-        }
+        req.setAttribute("cars",car);
+
+
+
+        DanhGiaDAO danhGiaDAO = new DanhGiaDAO();
+        danhGiaDAO.addToCart(2,car.getCarID(),client.getId());
+        
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/html5/cartUser.jsp");
+        dispatcher.forward(req,resp);
+
+
     }
 }

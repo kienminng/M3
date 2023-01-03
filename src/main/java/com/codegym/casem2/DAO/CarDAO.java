@@ -29,7 +29,8 @@ public class CarDAO {
                 String color = resultSet.getString("color");
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
-                cars.add(new Car(carID, carName, price, color, img, branch));
+                int status = resultSet.getInt("status");
+                cars.add(new Car(carID, carName, price, color, img, branch,status));
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -39,7 +40,7 @@ public class CarDAO {
     }
 
     public boolean saveCar(Car car) {
-        String spl = "insert into xe value(?,?,?,?,?,?)";
+        String spl = "insert into xe value(?,?,?,?,?,?,?)";
         Connection connection = ConnectionMySQL.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(spl);
@@ -49,6 +50,7 @@ public class CarDAO {
             preparedStatement.setString(4, car.getColor());
             preparedStatement.setString(5, car.getImg());
             preparedStatement.setString(6, car.getBranch());
+            preparedStatement.setInt(7,car.getStatus());
 
             return preparedStatement.execute();
         } catch (Exception e) {
@@ -75,6 +77,19 @@ public class CarDAO {
         }
 
     }
+    public void updateStatus(int status,int xeID){
+        String sql = "update xe set status=? where IDxe=?";
+        Connection connection = ConnectionMySQL.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,status);
+            preparedStatement.setInt(2,xeID);
+            preparedStatement.execute();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     public Car findByCarID(int id) {
 
@@ -93,8 +108,9 @@ public class CarDAO {
             String color = resultSet.getString("Color");
             String img = resultSet.getString("Img");
             String branch = resultSet.getString("branch");
+            int status = resultSet.getInt("status");
 
-            return new Car(id,nameCar,price,color,img,branch);
+            return new Car(id,nameCar,price,color,img,branch,status);
         }catch (Exception e){
 
             e.printStackTrace();
@@ -110,6 +126,7 @@ public class CarDAO {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1,carID);
+            preparedStatement.execute();
         } catch (Exception e){
 
             e.printStackTrace();
@@ -132,7 +149,8 @@ public class CarDAO {
                 String color = resultSet.getString("color");
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
-                cars.add(new Car(carID, carName, price, color, img, branch));
+                int status = resultSet.getInt("status");
+                cars.add(new Car(carID, carName, price, color, img, branch,status));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -154,7 +172,8 @@ public class CarDAO {
                 String color = resultSet.getString("Color");
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
-                cars.add(new Car(id, name, price, color,img,branch));
+                int status = resultSet.getInt("status");
+                cars.add(new Car(id, name, price, color,img,branch,status));
 
             }
         } catch (Exception e) {
@@ -179,7 +198,8 @@ public class CarDAO {
                 String color = resultSet.getString("Color");
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
-                cars.add(new Car(id, name, price, color,img,branch));
+                int status =resultSet.getInt("status");
+                cars.add(new Car(id, name, price, color,img,branch,status));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -201,7 +221,8 @@ public class CarDAO {
                 String color = resultSet.getString("Color");
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
-                cars.add(new Car(id, name, price, color,img,branch));
+                int status = resultSet.getInt("status");
+                cars.add(new Car(id, name, price, color,img,branch,status));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -231,7 +252,8 @@ public class CarDAO {
                 String color = resultSet.getString("Color");
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
-                cars.add(new Car(id,name,price,color,img,branch));
+                int status = resultSet.getInt("status");
+                cars.add(new Car(id,name,price,color,img,branch,status));
             }
         } catch (Exception e) {
             e.printStackTrace();

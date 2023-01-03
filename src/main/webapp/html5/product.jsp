@@ -127,7 +127,7 @@
         <li><a href="createCar"><i class="ti-plus ti-car"></i></a></li>
 
       </c:if>
-      <li><a href=""><i class="ti-shopping-cart"></i></a></li>
+      <li><a href="/cartUser?email=${client.email}"><i class="ti-shopping-cart"></i></a></li>
       <li>
         <a href="profile?email=${client.email}" >Welcome ${client.name} <i class="setting-login ti-id-badge"></i></a>
       </li>
@@ -151,25 +151,32 @@
 
 
   <c:forEach items="${carList}" var="cars">
-    <div class="card col-4" >
-      <div class="noi_dung">
-        <img src="${cars.img}" alt="loading" style="width:100%">
-        <h1>${cars.carName}</h1>
-        <p class="price">${cars.price} B VND</p>
-        <h3>${cars.branch} , color: ${cars.color}</h3>
-        <c:if test="${client.role==1}">
-          <p><button><a href="/addToCart?carID=${cars.carID}" style="text-decoration: none">Add to Cart</a></button></p>
-        </c:if>
-        <c:if test="${client.role==2}">
-          <div>
-            <button type="button" class="btn btn-dark" style="width: 35%;float: left;margin-left: 30px;"><a href="/carEdit?carID=${cars.carID}" style="text-decoration: none;color: white">Edit</a></button>
-            <button type="button" class="btn btn-warning" style="width: 35%;float: left;margin-left: 20px;"><a href="/viewDeleteCar?carID=${cars.carID}" style="text-decoration: none;color: white">Delete</a></button>
-          </div>
+    <c:if test="${cars.status!=3}">
+      <div class="card col-4" >
+        <div class="noi_dung">
+          <img src="${cars.img}" alt="loading" style="width:100%">
+          <h1>${cars.carName}</h1>
+          <p class="price">${cars.price} B VND</p>
+          <h3>${cars.branch} , color: ${cars.color}</h3>
+          <c:if test="${client.role==1}">
+            <c:if test="${cars.status==1}">
+              <p><button><a href="/addToCart?carID=${cars.carID}&&email=${client.email}" style="text-decoration: none">Add to Cart</a></button></p>
+            </c:if>
+            <c:if test="${cars.status==2}">
+              <p><button><a href="#" style="text-decoration: none">Ordered</a></button></p>
+            </c:if>
+          </c:if>
+          <c:if test="${client.role==2}">
+            <div>
+              <button type="button" class="btn btn-dark" style="width: 35%;float: left;margin-left: 30px;"><a href="/carEdit?carID=${cars.carID}" style="text-decoration: none;color: white">Edit</a></button>
+              <button type="button" class="btn btn-warning" style="width: 35%;float: left;margin-left: 20px;"><a href="/viewDeleteCar?carID=${cars.carID}" style="text-decoration: none;color: white">Delete</a></button>
+            </div>
 
-        </c:if>
+          </c:if>
+        </div>
       </div>
+    </c:if>
 
-    </div>
   </c:forEach>
 </div>
 
