@@ -101,9 +101,9 @@
         <a href="#">Price</a>
         <div class="subnav">
           <ul>
-            <li><a href="#">normal</a></li>
-            <li><a href="#">Midrange </a></li>
-            <li><a href="#">high</a></li>
+            <li><a href="priceNormal">normal</a></li>
+            <li><a href="priceMedium">Midrange </a></li>
+            <li><a href="priceHigh">high</a></li>
           </ul>
         </div>
       </li>
@@ -112,14 +112,20 @@
   <div id="login-icon">
     <ul>
       <li>
-        <input type="search" name="name">
+        <a href=""><i class="ti-email"></i></a>
       </li>
-      <li>
-        <a href="/search"><i class="ti-search"></i></a>
-      </li>
+
+<%--      <li>--%>
+<%--        <input type="search" name="name">--%>
+<%--      </li>--%>
+<%--      <li>--%>
+<%--        <a href="/search"><i class="ti-search"></i></a>--%>
+<%--      </li>--%>
       <c:if test="${client.role ==2}">
-        <li><a href=""><i class="ti-user"></i></a></li>
+
+        <li><a href="/ListUser"><i class="ti-user"></i></a></li>
         <li><a href="createCar"><i class="ti-plus ti-car"></i></a></li>
+
       </c:if>
       <li><a href=""><i class="ti-shopping-cart"></i></a></li>
       <li>
@@ -127,12 +133,23 @@
       </li>
 
 
+
     </ul>
   </div>
 </div>
 <div class="container" style="margin-top: 70px">
 
-  <h1 style="text-align: center">List of cars</h1>
+
+  <div style="margin-left: 810px"><form action="/searchCar" method="post">
+    <div>
+      <input type="text" placeholder="Enter here..." name = "name1" style="width: 250px">
+      <button type="submit" style="color: #3c97bf" >Search</button>
+    </div>
+  </form>
+  </div>
+    <h1 style="text-align: center">List of cars</h1>
+
+
   <c:forEach items="${carList}" var="cars">
     <div class="card col-4" >
       <div class="noi_dung">

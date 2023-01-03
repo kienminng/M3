@@ -9,27 +9,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
-@WebServlet(urlPatterns = "/checkLogin")
-public class checkLogin extends HttpServlet {
-
+import java.util.List;
+@WebServlet(urlPatterns = "/searchUser")
+public class SearchUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name1");
         ClientServiceliml clientServiceliml = new ClientServiceliml();
-        String email = req.getParameter("name");
-        String password = req.getParameter("password");
-        Client client = clientServiceliml.checkLogin(email,password);
-
-
-        if (client!=null) {
-                HttpSession session = req.getSession();
-                session.setAttribute("client",client);
-                resp.sendRedirect("/carHome");
-
-        } else  {
-            resp.sendRedirect("/login?mess=error");
-        }
+        List<Client> clients = clientServiceliml.searchUser(name);
+        req.setAttribute("User", clients);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/html5/showClient.jsp");
+        dispatcher.forward(req,resp);
     }
 }

@@ -50,13 +50,16 @@
     </div>
     <div id="login-icon">
         <ul>
+            <li>
+                <a href=""><i class="ti-email"></i></a>
+            </li>
             <c:if test="${client.role ==2}">
                 <li><a href=""><i class="ti-user"></i></a></li>
                 <li><a href="/createCar"><i class="ti-plus ti-car"></i></a></li>
             </c:if>
             <li><a href=""><i class="ti-shopping-cart"></i></a></li>
             <li>
-                <a href="/profile" >${client.name} <i class="setting-login ti-user"></i></a>
+                <a href="/profile">${client.name} <i class="setting-login ti-user"></i></a>
             </li>
         </ul>
     </div>
@@ -72,19 +75,14 @@
                         </div>
                         <div class="col-md-4 gradient-custom text-center text-white"
                              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-<%--                            <button  class="btn btn-dark"--%>
-<%--                                     style="list-style-type: none;float: left;"><a href="/carHome" style="text-decoration: none;color: white">--%>
-<%--                                Back</a></button>--%>
 
-                                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-                                     alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
 
-<%--                            <c:if test="${client.img!=null}">--%>
-<%--                                <img src="${client.img}" alt="Avatar" class="img-fluid my-5" style="width: 80px;">--%>
-<%--                            </c:if>--%>
-
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                                 alt="Avatar" class="img-fluid my-5" style="width: 80px;"/>
 
                             <h5> ${client.name} </h5>
+
+                            =======
                             <c:if test="${client.role==1}">
                                 <p>Client</p>
                             </c:if>
@@ -102,7 +100,7 @@
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
-                                        <h6></h6>
+                                        <h6>Email</h6>
                                         <p class="text-muted">${client.email}</p>
                                     </div>
                                     <div class="col-6 mb-3">
@@ -122,7 +120,7 @@
                                         <c:if test="${client.role==1}">
                                             <p class="text-muted">User</p>
                                         </c:if>
-                                        <c:if  test="${client.role==2}">
+                                        <c:if test="${client.role==2}">
                                             <p class="text-muted">Admin</p>
                                         </c:if>
 
@@ -134,16 +132,15 @@
                                     <a href="https://www.instagram.com/"><i class="fab ti-instagram fa-lg"></i></a>
                                 </div>
                                 <div>
-
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-danger" style="float: right">
                                         <a href="/login" style="text-decoration: none;color: white">Log out</a>
                                     </button>
                                     <button type="button" class="btn btn-warning" style="float: right">
-                                        <a href="/login" style="text-decoration: none;color: white">Edit profile</a>
+                                        <a href="editUser?email=${client.email}"
+                                           style="text-decoration: none;color: white">Edit profile</a>
                                     </button>
-
                                 </div>
                             </div>
                         </div>

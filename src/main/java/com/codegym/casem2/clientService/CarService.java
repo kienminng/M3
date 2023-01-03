@@ -2,6 +2,7 @@ package com.codegym.casem2.clientService;
 
 import com.codegym.casem2.DAO.CarDAO;
 import com.codegym.casem2.modal.Car;
+import com.codegym.casem2.modal.Client;
 
 import java.util.List;
 
@@ -28,5 +29,19 @@ public class CarService {
         carDAO.deleteCar(Id);
     }
 
+    public List<Car> priceNormal() {
+        return carDAO.priceNormal();
+    }
 
+    public List<Car> priceMedium() {
+        return carDAO.priceMedium();
+    }
+
+    public List<Car> priceHigh() {
+        return carDAO.priceHigh();
+    }
+
+    public List<Car> searchCar(String name) {
+        return carDAO.searchCar(name);
+    }
 }

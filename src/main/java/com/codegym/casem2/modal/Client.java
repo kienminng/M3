@@ -3,6 +3,7 @@ package com.codegym.casem2.modal;
 import java.util.List;
 
 public class Client {
+    private int id;
     private  String name;
     private  String email;
     private  String password;
@@ -37,6 +38,25 @@ public class Client {
         this.gender = gender;
         this.address = address;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Client(int id, String name, String email, String password, int role, String gender, String address, int phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.gender = gender;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
