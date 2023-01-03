@@ -103,11 +103,16 @@ public class ProductDAO {
 
 
     public void delete(String email) {
-        String sql = "delete from khachhang where email =" +email;
         Connection connection = ConnectionMySQL.getConnection();
+        String sql = "delete from khachhang where email =?";
         try {
-            Statement statement = connection.createStatement();
-            statement.execute(sql);
+
+//            Statement statement = connection.createStatement();
+//            statement.execute(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,email);
+            preparedStatement.execute();
+//            ResultSet resultSet = preparedStatement.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -135,7 +140,6 @@ public class ProductDAO {
             return null;
         }
     }
-    //        String sql = "select * from khachhang where name = ? or email =? or gender=? or address = ?";
 
     public List<Client> searchUser(String names) {
         List<Client> clients = new ArrayList<>();
