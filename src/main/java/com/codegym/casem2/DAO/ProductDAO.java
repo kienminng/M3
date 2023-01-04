@@ -135,7 +135,6 @@ public class ProductDAO {
 
             return new Client(ID,name, email, pass, role, gender, address, phoneNumber);
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }

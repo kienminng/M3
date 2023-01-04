@@ -171,8 +171,52 @@ public class DanhGiaDAO {
         return danhGias;
     }
 
-    public void sumPrice() {
-        String sql = "select sum(price) from khachhang join danhgia on danhgia.IDKH=khachhang.IDKH join xe on danhgia.IDxe=xe.IDxe where xe.status=3;";
+    public double sumPrice() {
+        List<DanhGia> danhGias = new ArrayList<>();
+        String sql = "select sum(price) as sumprice from khachhang join danhgia on danhgia.IDKH=khachhang.IDKH join xe on danhgia.IDxe=xe.IDxe where xe.status=3";
+        Connection connection = ConnectionMySQL.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            double price = resultSet.getDouble("sumprice");
+            return price;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public List<DanhGia> doneDear(){
+        List<DanhGia> danhGias = new ArrayList<>();
+
+        String sql = "select * from khachhang join danhgia on danhgia.IDKH=khachhang.IDKH join xe on danhgia.IDxe=xe.IDxe where status=3";
+        Connection connection = ConnectionMySQL.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int status = resultSet.getInt("status");
+                int IDxe = resultSet.getInt("IDxe");
+                String NameXe = resultSet.getString("NameXe");
+                double price = resultSet.getDouble("Price");
+                String color = resultSet.getString("Color");
+                String img = resultSet.getString("Img");
+                String branch = resultSet.getString("branch");
+                int IDHD = resultSet.getInt("IDHD");
+                int IDKH = resultSet.getInt("IDKH");
+                String content = resultSet.getString("content");
+
+                danhGias.add(new DanhGia(IDxe,NameXe,price,color,img,branch,status,IDHD,IDKH,content));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return danhGias;
+
     }
 
 
