@@ -1,9 +1,8 @@
 package com.codegym.casem2.view;
 
-import com.codegym.casem2.clientService.ClientServiceliml;
 import com.codegym.casem2.clientService.DanhGiaService;
-import com.codegym.casem2.modal.Client;
 import com.codegym.casem2.modal.DanhGia;
+import com.codegym.casem2.modal.HoaDon;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,20 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/cartUser")
-public class viewCart extends HttpServlet {
+@WebServlet(urlPatterns = "/viewEmailUser")
+public class viewEmailUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        ClientServiceliml clientServiceliml = new ClientServiceliml();
-        Client client = clientServiceliml.findIndexByEmail(email);
-        req.setAttribute("client",client);
         DanhGiaService danhGiaService = new DanhGiaService();
-        List<DanhGia> list = danhGiaService.ShowNotification(email);
-        req.setAttribute("list",list);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/html5/cartUser.jsp");
-        dispatcher.forward(req,resp);
-
-
+        List<DanhGia> hoaDonList = danhGiaService.ShowNotification(email);
+        req.setAttribute("listHD",hoaDonList);
+        RequestDispatcher requestDispatcher =req.getRequestDispatcher("/html5/emailUser.jsp");
+        requestDispatcher.forward(req,resp);
     }
 }

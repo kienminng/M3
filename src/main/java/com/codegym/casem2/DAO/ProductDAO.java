@@ -128,6 +128,8 @@ public class ProductDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
 
+            int ID = resultSet.getInt("IDKH");
+
             String pass = resultSet.getString("password");
             String name = resultSet.getString("name");
             int role = resultSet.getInt("role");
@@ -135,7 +137,7 @@ public class ProductDAO {
             String address = resultSet.getString("address");
             int phoneNumber = resultSet.getInt("sdt");
 
-            return new Client(name, email, pass, role, gender, address, phoneNumber);
+            return new Client(ID,name, email, pass, role, gender, address, phoneNumber);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

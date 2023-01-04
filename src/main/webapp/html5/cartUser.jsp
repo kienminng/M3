@@ -18,88 +18,99 @@
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
-                <p><span class="h2">Order Cart </span><span class="h4"></span></p>
+                <p><span class="h2">Order Cart </span></p>
 
-                <c:forEach var="car" items="${cars}" >
-                    <c:if test="${car.status!=1}">
+                <c:forEach items="${list}" var="list">
+                    <c:if test="${list.status!=1}">
                         <div class="card mb-4">
                             <div class="card-body p-4">
 
                                 <div class="row align-items-center">
-                                    <div class="col-md-2">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-                                             class="img-fluid" alt="Generic placeholder image">
-                                    </div>
+                                        <%--                                    <div class="col-md-2">--%>
+                                        <%--                                        <img src="${car.img}"--%>
+                                        <%--                                             class="img-fluid" alt="Generic placeholder image">--%>
+                                        <%--                                    </div>--%>
                                     <div class="col-md-2 d-flex justify-content-center">
                                         <div>
-                                            <p class="small text-muted mb-4 pb-2">Car name</p>
-                                            <p class="lead fw-normal mb-0">${car.carName}</p>
+                                            <p class="small text-muted mb-4 pb-2"> Car Name</p>
+                                            <p class="lead fw-normal mb-0">${list.carName}</p>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 d-flex justify-content-center">
-                                        <div>
-                                            <p class="small text-muted mb-4 pb-2">Color</p>
-                                            <p class="lead fw-normal mb-0"><i class="fas fa-circle me-2" style="color: #fdd8d2;"></i>
-                                            ${car.color}</p>
-                                        </div>
-                                    </div>
-
-                                    <c:if test="${car.satus==2}">
-                                        <div class="col-md-2 d-flex justify-content-center">
-                                            <div>
-                                                <p class="small text-muted mb-4 pb-2">Status</p>
-                                                <p class="lead fw-normal mb-0">Order</p>
-                                            </div>
-                                        </div>
-                                    </c:if>
-                                    <c:if test="${car.status==3}">
-                                        <div class="col-md-2 d-flex justify-content-center">
-                                            <div>
-                                                <p class="small text-muted mb-4 pb-2">Status</p>
-                                                <p class="lead fw-normal mb-0">Bought</p>
-                                            </div>
-                                        </div>
-                                    </c:if>
-
                                     <div class="col-md-2 d-flex justify-content-center">
                                         <div>
                                             <p class="small text-muted mb-4 pb-2">Price</p>
-                                            <p class="lead fw-normal mb-0">${car.price}</p>
+                                            <p class="lead fw-normal mb-0"><i class="fas fa-circle me-2" style="color: #fdd8d2;"></i>
+                                                <a href="#">${list.price}</a></p>
                                         </div>
                                     </div>
 
-<%--                                    <div class="col-md-2 d-flex justify-content-center">--%>
-<%--                                        <div>--%>
-<%--                                            <p class="small text-muted mb-4 pb-2">Total</p>--%>
-<%--                                            <p class="lead fw-normal mb-0">$799</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
+                                            <div class="col-md-2 d-flex justify-content-center">
+                                                <div>
+                                                    <p class="small text-muted mb-4 pb-2">Img</p>
+                                                    <p class="lead fw-normal mb-0"><i class="fas fa-circle me-2" style="color: #fdd8d2;"></i>
+                                                        <img src="" alt=""></p>
+                                                </div>
+                                            </div>                        
+
+                                        <div class="col-md-2 d-flex justify-content-center" style="position: relative">
+                                            <div>
+                                                <p class="small text-muted mb-4 pb-2">Status</p>
+                                                <c:if test="${list.status==2}">
+                                                    <p class="lead fw-normal mb-0">Order</p>
+                                                </c:if>
+                                                <c:if test="${list.status==3}">
+                                                    <p class="lead fw-normal mb-0">Bought</p>
+                                                </c:if>
+
+                                            </div>
+                                        </div>
+                                        <c:if test="${list.status==2}">
+                                            <div class="col-md-2 d-flex justify-content-center">
+                                                <div>
+                                                    <p class="small text-muted mb-4 pb-2">Another</p>
+                                                    <p class="lead fw-normal mb-0"><a href="/deleteCarFromCart?carID=${list.IDxe}" class="btn btn-warning">Delete</a></p>
+                                                </div>
+                                            </div>
+                                        </c:if>
+
+
+
+
+
+                                        <%--                                    <div class="col-md-2 d-flex justify-content-center">--%>
+                                        <%--                                        <div>--%>
+                                        <%--                                            <p class="small text-muted mb-4 pb-2">Total</p>--%>
+                                        <%--                                            <p class="lead fw-normal mb-0">$799</p>--%>
+                                        <%--                                        </div>--%>
+                                        <%--                                    </div>--%>
                                 </div>
 
                             </div>
                         </div>
                     </c:if>
-
                 </c:forEach>
 
 
 
-                <div class="card mb-5">
-                    <div class="card-body p-4">
 
-                        <div class="float-end">
-                            <p class="mb-0 me-5 d-flex align-items-center">
-                                <span class="small text-muted me-2">Order total:</span> <span
-                                    class="lead fw-normal">$799</span>
-                            </p>
-                        </div>
 
-                    </div>
-                </div>
+
+
+<%--                <div class="card mb-5">--%>
+<%--                    <div class="card-body p-4">--%>
+
+<%--                        <div class="float-end">--%>
+<%--                            <p class="mb-0 me-5 d-flex align-items-center">--%>
+<%--                                <span class="small text-muted me-2">Order total:</span> <span--%>
+<%--                                    class="lead fw-normal">$799</span>--%>
+<%--                            </p>--%>
+<%--                        </div>--%>
+
+<%--                    </div>--%>
+<%--                </div>--%>
 
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-light btn-lg me-2">Continue shopping</button>
-                    <button type="button" class="btn btn-primary btn-lg">Add to cart</button>
+                    <button type="button" class="btn btn-light btn-lg me-2"><a href="/carModal">Continue shopping</a></button>
                 </div>
 
             </div>

@@ -4,6 +4,7 @@ import com.codegym.casem2.DAO.DanhGiaDAO;
 import com.codegym.casem2.clientService.CarService;
 import com.codegym.casem2.clientService.Cart;
 import com.codegym.casem2.clientService.ClientServiceliml;
+import com.codegym.casem2.clientService.DanhGiaService;
 import com.codegym.casem2.modal.Car;
 import com.codegym.casem2.modal.Client;
 
@@ -28,15 +29,16 @@ public class addToCart extends HttpServlet {
         Cart cart = new Cart();
         CarService carService =new CarService();
         Car car = carService.findByCarID(carID);
-        req.setAttribute("cars",car);
+        carService.updateStatus(2,car.getCarID());
+
+        req.setAttribute("car",car);
 
 
+        DanhGiaService danhGiaService = new DanhGiaService();
+        danhGiaService.addToCart(2,car.getCarID(),client.getId());
 
-        DanhGiaDAO danhGiaDAO = new DanhGiaDAO();
-        danhGiaDAO.addToCart(2,car.getCarID(),client.getId());
-        
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/html5/cartUser.jsp");
-        dispatcher.forward(req,resp);
+
+        resp.sendRedirect("/carModal");
 
 
     }
