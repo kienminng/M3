@@ -28,6 +28,7 @@
             <span>or use your account</span>
             <input type="email" placeholder="Email" name="name" id="name">
             <input type="password" placeholder="Password" name="password" id="password" >
+            <p style="color: red;font-size: 20px">${mess}</p>
             <a href="register">Register</a>
             <button type="submit">Login</button>
         </form>

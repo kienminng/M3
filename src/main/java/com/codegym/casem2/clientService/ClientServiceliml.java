@@ -32,9 +32,14 @@ public class ClientServiceliml {
         return productDAO.checkEmail(email);
     }
 
+
+
     public Client checkLogin(String email,String pass) {
         return productDAO.checkLogin(email,pass);
     }
 
+    public List<Client> searchUser(String name) {
+        return productDAO.searchUser(name);
+    }
 
 }

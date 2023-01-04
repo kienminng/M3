@@ -1,4 +1,4 @@
-package com.codegym.casem2.view;
+package com.codegym.casem2.controller;
 
 import com.codegym.casem2.clientService.CarService;
 import com.codegym.casem2.clientService.ClientServiceliml;
@@ -14,23 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/carModal")
-public class CarModal extends HttpServlet {
+@WebServlet(urlPatterns = "/searchCar")
+public class SearchCar extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientServiceliml clientServiceliml = new ClientServiceliml();
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name1");
         CarService carService = new CarService();
-        List<Car> carList = carService.getAllCar();
-
-        String email = req.getParameter("email");
-
-        Client client = clientServiceliml.findIndexByEmail(email);
-
-        req.setAttribute("client",client);
-        req.setAttribute("carList",carList);
-
+        List<Car> cars = carService.searchCar(name);
+        req.setAttribute("carList", cars);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/html5/product.jsp");
-
         dispatcher.forward(req,resp);
     }
 }
