@@ -40,4 +40,12 @@ public class DanhGiaService {
     public List<DanhGia> showAdminHD(){
         return danhGiaDAO.adminShowHD();
     }
+
+    public double sumPrice(){
+        return danhGiaDAO.sumPrice();
+    }
+
+    public List<DanhGia> doneDear() {
+        return danhGiaDAO.doneDear();
+    }
 }

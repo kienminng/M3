@@ -15,7 +15,7 @@ public class CarDAO {
 
     public List<Car> getAllCar() {
         List<Car> cars = new ArrayList<>();
-        String sql = "select * from xe";
+        String sql = "select * from xe where status =2 or status =1";
 
         Connection connection = ConnectionMySQL.getConnection();
 

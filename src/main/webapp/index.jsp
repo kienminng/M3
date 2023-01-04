@@ -28,11 +28,18 @@
     </div>
     <div id="login-icon">
         <ul>
+            <c:if test="${client.role==2}">
+                <li>
+                    <a href="/showMoney"><i class="ti-money"></i></a>
+                </li>
+            </c:if>
+
             <li>
                 <c:if test="${client.role==1}">
                     <a href="/viewEmailUser?email=${client.email}"><i class="ti-email"></i></a>
                 </c:if>
                 <c:if test="${client.role==2}">
+
                     <a href="/adminEmail"><i class="ti-email"></i></a>
                 </c:if>
             </li>
@@ -47,7 +54,12 @@
 
             </c:if>
             <li>
-                <a href="profile?email=${client.email}" >Welcome ${client.name} <i class="setting-login ti-id-badge"></i></a>
+                <c:if test="${client.email==null}">
+                    <a href="/login" >login <i class="setting-login ti-id-badge"></i></a>
+                </c:if>
+                <c:if test="${client.email!=null}">
+                    <a href="profile?email=${client.email}" >Welcome ${client.name} <i class="setting-login ti-id-badge"></i></a>
+                </c:if>
             </li>
         </ul>
     </div>
