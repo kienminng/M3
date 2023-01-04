@@ -29,7 +29,12 @@
     <div id="login-icon">
         <ul>
             <li>
-                <a href=""><i class="ti-email"></i></a>
+                <c:if test="${client.role==1}">
+                    <a href="/viewEmailUser?email=${client.email}"><i class="ti-email"></i></a>
+                </c:if>
+                <c:if test="${client.role==2}">
+                    <a href="/adminEmail"><i class="ti-email"></i></a>
+                </c:if>
             </li>
             <c:if test="${client.role ==2}">
                 <li><a href="/ListUser"><i class="ti-user"></i></a></li>

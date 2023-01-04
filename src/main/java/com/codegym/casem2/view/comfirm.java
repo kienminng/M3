@@ -17,8 +17,6 @@ public class comfirm extends HttpServlet {
         int carID = Integer.parseInt(req.getParameter("carID"));
         CarService carService = new CarService();
         carService.updateStatus(3,carID);
-        DanhGiaService danhGiaService = new DanhGiaService();
-        danhGiaService.updateStatus(3,carID);
         resp.sendRedirect("/adminHoaDon");
     }
 }

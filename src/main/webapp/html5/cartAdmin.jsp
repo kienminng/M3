@@ -36,6 +36,7 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <c:forEach var="list" items="${list}">
+                                            <c:if test="${list.status==2}">
                                                 <div class="d-flex justify-content-between">
                                                     <div class="d-flex flex-row align-items-center">
                                                         <div class="img-fluid rounded-3"style="width: 65px;" >
@@ -56,10 +57,10 @@
                                                         <div class="d-flex flex-row align-items-center">
                                                             <c:if test="${list.status==2}">
                                                                 <div style="width: 80px;">
-                                                                    <a href="/deleteCarFromCart?carID=${list.IDxe}"><button type="button" class="btn btn-danger">Delete</button></a>
+                                                                    <a href="/deleteCarFromCart?carID=${list.carID}"><button type="button" class="btn btn-danger">Delete</button></a>
                                                                 </div>
                                                                 <div style="width: 80px;">
-                                                                    <a href="/comfirmCarFormCart?carID=${list.IDxe}"><button type="button" class="btn btn-info">confirm</button></a>
+                                                                    <a href="/comfirmCarFormCart?carID=${list.carID}"><button type="button" class="btn btn-info">confirm</button></a>
                                                                 </div>
                                                             </c:if>
                                                             <c:if test="${list.status==3}">
@@ -74,34 +75,14 @@
                                                     </div>
 
                                                 </div>
+                                            </c:if>
+
 
                                         </c:forEach>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5">
-
-                                <div class="card bg-primary text-white rounded-3">
-                                    <div class="card-body">
-                                        <hr class="my-4">
-                                        <div class="d-flex justify-content-between mb-4">
-                                            <p class="mb-2">Total(Incl. taxes)</p>
-                                            <p class="mb-2">$4818.00</p>
-                                        </div>
-
-                                        <button type="button" class="btn btn-info btn-block btn-lg">
-                                            <div class="d-flex justify-content-between">
-                                                <span>$4818.00</span>
-                                                <div>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></div>
-                                            </div>
-                                        </button>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
                         </div>
 
                     </div>

@@ -27,8 +27,8 @@ public class DanhGiaDAO {
                 int IDKH = resultSet.getInt("IDKH");
                 int IDxe = resultSet.getInt("IDxe");
                 String content = resultSet.getString("content");
-                int status = resultSet.getInt("status");
-                danhGias.add(new DanhGia(IDKH,IDxe,content,status));
+                int IDHD = resultSet.getInt("IDHD");
+                danhGias.add(new DanhGia(IDHD,IDKH,IDxe,content));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,8 +47,8 @@ public class DanhGiaDAO {
             while (resultSet.next()) {
                 int IDxe = resultSet.getInt("IDxe");
                 String content = resultSet.getString("content");
-                int status = resultSet.getInt("status");
-                danhGias.add(new DanhGia(IDKH,IDxe,content,status));
+                int IDHD = resultSet.getInt("IDHD");
+                danhGias.add(new DanhGia(IDHD,IDKH,IDxe,content));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,20 +56,20 @@ public class DanhGiaDAO {
         return danhGias;
     }
 
-    public void updateStatus(int status,int xeID){
-        String sql = "update danhgia set status=? where IDxe=?";
-        Connection connection = ConnectionMySQL.getConnection();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1,status);
-            preparedStatement.setInt(2,xeID);
-            preparedStatement.execute();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+//    public void updateStatus(int status,int xeID){
+//        String sql = "update danhgia set status=? where IDxe=?";
+//        Connection connection = ConnectionMySQL.getConnection();
+//        try {
+//            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//            preparedStatement.setInt(1,status);
+//            preparedStatement.setInt(2,xeID);
+//            preparedStatement.execute();
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
     public void updateContent(int IDxe,String content){
-        String sql = "update danhgia set content=? wherer IDxe=?";
+        String sql = "update danhgia set content=? where IDxe=?";
         Connection connection = ConnectionMySQL.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -84,14 +84,13 @@ public class DanhGiaDAO {
     CarDAO carDAO = new CarDAO();
 
 
-    public boolean addToCart(int status,int xeID,int IDKH) {
-        String sql = "insert into danhgia value(?,?,null,?)";
+    public boolean addToCart(int xeID,int IDKH) {
+        String sql = "insert into danhgia value(null,?,?,null)";
         Connection connection = ConnectionMySQL.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1,xeID);
             preparedStatement.setInt(2,IDKH);
-            preparedStatement.setInt(3,status);
             return preparedStatement.execute();
 
         }catch (Exception e){
@@ -129,10 +128,11 @@ public class DanhGiaDAO {
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
                 int status = resultSet.getInt("status");
+                int IDHD = resultSet.getInt("IDHD");
                 int IDKH = resultSet.getInt("IDKH");
                 String content = resultSet.getString("content");
 
-                danhGias.add(new DanhGia(IDxe,NameXe,price,color,img,branch,status,IDKH,content));
+                danhGias.add(new DanhGia(IDxe,NameXe,price,color,img,branch,status,IDHD,IDKH,content));
             }
 
         } catch (Exception e) {
@@ -158,10 +158,11 @@ public class DanhGiaDAO {
                 String color = resultSet.getString("Color");
                 String img = resultSet.getString("Img");
                 String branch = resultSet.getString("branch");
+                int IDHD = resultSet.getInt("IDHD");
                 int IDKH = resultSet.getInt("IDKH");
                 String content = resultSet.getString("content");
 
-                danhGias.add(new DanhGia(IDxe,NameXe,price,color,img,branch,status,IDKH,content));
+                danhGias.add(new DanhGia(IDxe,NameXe,price,color,img,branch,status,IDHD,IDKH,content));
             }
 
         } catch (Exception e) {
@@ -170,6 +171,9 @@ public class DanhGiaDAO {
         return danhGias;
     }
 
+    public void sumPrice() {
+        String sql = "select sum(price) from khachhang join danhgia on danhgia.IDKH=khachhang.IDKH join xe on danhgia.IDxe=xe.IDxe where xe.status=3;";
+    }
 
 
 }

@@ -26,10 +26,10 @@
                             <div class="card-body p-4">
 
                                 <div class="row align-items-center">
-                                        <%--                                    <div class="col-md-2">--%>
-                                        <%--                                        <img src="${car.img}"--%>
-                                        <%--                                             class="img-fluid" alt="Generic placeholder image">--%>
-                                        <%--                                    </div>--%>
+                                    <div class="col-md-2">
+                                        <img src="${list.img}"
+                                             class="img-fluid" >
+                                    </div>
                                     <div class="col-md-2 d-flex justify-content-center">
                                         <div>
                                             <p class="small text-muted mb-4 pb-2"> Car Name</p>
@@ -68,7 +68,7 @@
                                             <div class="col-md-2 d-flex justify-content-center">
                                                 <div>
                                                     <p class="small text-muted mb-4 pb-2">Another</p>
-                                                    <p class="lead fw-normal mb-0"><a href="/deleteCarFromCart?carID=${list.IDxe}" class="btn btn-warning">Delete</a></p>
+                                                    <p class="lead fw-normal mb-0"><a href="/deleteCarFromCart?carID=${list.carID}" class="btn btn-warning">Delete</a></p>
                                                 </div>
                                             </div>
                                         </c:if>

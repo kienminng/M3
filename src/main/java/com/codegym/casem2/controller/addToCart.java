@@ -25,6 +25,8 @@ public class addToCart extends HttpServlet {
         Client client = clientServiceliml.findIndexByEmail(email);
         req.setAttribute("client",client);
 
+
+
         int carID = Integer.parseInt(req.getParameter("carID"));
         Cart cart = new Cart();
         CarService carService =new CarService();
@@ -35,7 +37,7 @@ public class addToCart extends HttpServlet {
 
 
         DanhGiaService danhGiaService = new DanhGiaService();
-        danhGiaService.addToCart(2,car.getCarID(),client.getId());
+        danhGiaService.addToCart(car.getCarID(),client.getId());
 
 
         resp.sendRedirect("/carModal");

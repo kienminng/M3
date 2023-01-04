@@ -13,12 +13,12 @@ public class DanhGiaService {
         return danhGiaDAO.getAllDanhGia();
     }
 
-    public void updateStatus(int status,int xeID){
-        danhGiaDAO.updateStatus(status,xeID);
-    }
+//    public void updateStatus(int status,int xeID){
+//        danhGiaDAO.updateStatus(status,xeID);
+//    }
 
-    public boolean addToCart(int status,int xeID,int IDKH){
-        return danhGiaDAO.addToCart(status,xeID,IDKH);
+    public boolean addToCart(int xeID,int IDKH){
+        return danhGiaDAO.addToCart(xeID,IDKH);
     }
 
     public List<DanhGia> getAllDanhGiaFormIDKH(int IDKH){

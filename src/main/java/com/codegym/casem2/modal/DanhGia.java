@@ -1,37 +1,35 @@
 package com.codegym.casem2.modal;
 
 public class DanhGia extends Car {
+    private  int IDHD;
     private int IDKH;
     private int IDxe;
     private String content;
-    private int status;
 
     public DanhGia() {
     }
 
 
-
-    public DanhGia(int IDKH, int IDxe, String content, int status) {
+    public DanhGia(int IDHD, int IDKH, int IDxe, String content) {
+        this.IDHD = IDHD;
         this.IDKH = IDKH;
         this.IDxe = IDxe;
         this.content = content;
-        this.status = status;
     }
 
-    public DanhGia(int carID, String carName, double price, String color, String img, String branch, int status, int IDKH, String content) {
+    public DanhGia(int carID, String carName, double price, String color, String img, String branch, int status, int IDHD, int IDKH, String content) {
         super(carID, carName, price, color, img, branch, status);
+        this.IDHD = IDHD;
         this.IDKH = IDKH;
         this.content = content;
     }
-
-
 
     public DanhGia(int carID, String carName, double price, String color, String img, String branch, int status, int IDKH, int IDxe, String content, int status1) {
         super(carID, carName, price, color, img, branch, status);
         this.IDKH = IDKH;
         this.IDxe = IDxe;
         this.content = content;
-        this.status = status1;
+
     }
 
     public int getIDKH() {
@@ -58,11 +56,11 @@ public class DanhGia extends Car {
         this.content = content;
     }
 
-    public int getStatus() {
-        return status;
+    public int getIDHD() {
+        return IDHD;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setIDHD(int IDHD) {
+        this.IDHD = IDHD;
     }
 }
